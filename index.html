@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Social Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#12aaf7; --text:#0b2a3d; --muted:#000; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; min-height:100svh; background:linear-gradient(to bottom,#B8FB3C,#03045E) no-repeat fixed; font-family:Poppins,system-ui,sans-serif;
+         display:flex; justify-content:center; align-items:center; padding:32px 16px; }
+  main { width:100%; max-width:360px; text-align:center; }
+  .avatar { width:140px; height:140px; border-radius:50%; background:#000; margin:0 auto 14px; position:relative; overflow:hidden; }
+  .avatar img { position:absolute; width:271px; max-width:none; left:-38px; top:-27px; }
+  h1 { font-size:18px; font-weight:500; margin:0; color:var(--text); }
+  p.tag { font-size:13px; margin:4px 0 56px; color:var(--muted); }
+  a.link { display:flex; align-items:center; gap:14px; height:57px; margin-bottom:9px; padding:0 18px;
+           border-radius:6px; color:#fff; text-decoration:none; font-size:13px; font-weight:500;
+           transition:transform .15s, filter .15s; }
+  a.link:hover { transform:translateY(-2px); filter:brightness(1.08); }
+  a.link svg { width:28px; height:28px; fill:#fff; flex:none; }
+  .facebook { background:#3b5998; } .instagram { background:#e4405f; }
+  .x { background:#000; } .linkedin { background:#0077b5; }
+  .youtube { background:#e62117; } .tiktok { background:#111; } .whatsapp { background:#25d366; }
+
+  /* Splash screen shown while the page loads */
+  #splash { position:fixed; inset:0; z-index:9999; background:#000; display:flex; align-items:center; justify-content:center;
+            transition:opacity .5s ease, visibility .5s ease; }
+  #splash.hide { opacity:0; visibility:hidden; }
+  #splash .logo { width:200px; height:200px; border-radius:50%; position:relative; overflow:hidden; background:#000;
+                  animation:pulse 1.4s ease-in-out infinite; }
+  #splash .logo img { position:absolute; width:387px; max-width:none; left:-54px; top:-39px; }
+  @keyframes pulse { 0%,100% { transform:scale(1); opacity:.85; } 50% { transform:scale(1.06); opacity:1; } }
+</style>
+</head>
+<body>
+<div id="splash"><div class="logo"><img src="profile.jpg" alt=""></div></div>
+<noscript><style>#splash{display:none}</style></noscript>
+<main>
+  <!-- Put your photo/logo next to this file as profile.jpg -->
+  <div class="avatar"><img src="profile.jpg" alt="The Builders Network" onerror="this.removeAttribute('src')"></div>
+  <h1>Follow us on Social Media</h1>
+  <p class="tag">Stay connected with TBN. Get updates, discover opportunities,
+     meet fellow builders, and be part of the conversations shaping our community.</p>
+  <div id="links"></div>
+</main>
+
+<script>
+  // ====== EDIT YOUR LINKS HERE ======
+  const links = [
+    { cls:"whatsapp",  text:"Join our WhatsApp community", url:"https://chat.whatsapp.com/Eeo3554tq0r5RnrPDlffUm?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2",
+      icon:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" },
+    { cls:"tiktok",    text:"Follow us on TikTok",    url:"https://www.tiktok.com/@buildwithtbn",
+      icon:"M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" },
+    { cls:"x",         text:"Follow us on X",         url:"https://x.com/BuildWithTBN",
+      icon:"M18.2 2h3.3l-7.2 8.3L22.8 22h-6.6l-5.2-6.8L5 22H1.7l7.7-8.8L1.2 2H8l4.7 6.2L18.2 2zm-1.2 18h1.8L7 3.9H5.1L17 20z" },
+    { cls:"linkedin",  text:"Connect on LinkedIn",    url:"https://www.linkedin.com/company/buildwithtbn/",
+      icon:"M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.700V21h-4V9.5z" }
+  ];
+  // ==================================
+  // Splash: show at least 1.5s, hide once the page has loaded (fallback after 5s)
+  (function () {
+    const splash = document.getElementById("splash"), start = Date.now();
+    let done = false;
+    const hide = () => { if (done) return; done = true; splash.classList.add("hide"); setTimeout(() => splash.remove(), 600); };
+    window.addEventListener("load", () => setTimeout(hide, Math.max(0, 1500 - (Date.now() - start))));
+    setTimeout(hide, 5000);
+  })();
+
+  document.getElementById("links").innerHTML = links.map(l =>
+    `<a class="link ${l.cls}" href="${l.url}" target="_blank" rel="noopener">
+       <svg viewBox="0 0 24 24"><path d="${l.icon}"/></svg><span>${l.text}</span></a>`).join("");
+</script>
+</body>
+</html>
